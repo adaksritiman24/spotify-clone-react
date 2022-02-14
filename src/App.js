@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Main from './components/Main';
+import Navbar from './components/Navbar';
+import MusicControl from './components/MusicControl';
+import {audio} from './audio';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [song, setSong] = useState(audio[0]);
+    const [pageType, setPageType] = useState("home");
+
+
+    const setCurrentTrack = (id)=>{
+        var newsong = audio.filter((song)=>song.id === id)[0];
+        setSong(newsong);
+    }
+
+    
+    return (
+        <div className='container'>
+            <Navbar setPageType={setPageType}/>
+            <Main audio = {audio} setCurrentTrack= {setCurrentTrack} pageType={pageType} setPageType={setPageType} songId={song.id}/>
+            <MusicControl currentSong={song} setCurrentTrack={setCurrentTrack}/>
+        </div>
+    )
 }
 
 export default App;

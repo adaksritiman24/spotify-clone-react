@@ -1,0 +1,21 @@
+.navbar{
+    padding: 20px;
+}
+
+.navbar > .options{
+    margin-top: 20px;
+    padding: 10px;
+    padding-left: 0px;
+}
+
+.navbar > .options > div{
+    padding: 10px 0px;
+    font-size: 20px;
+}
+.navbar > .options > div:hover {
+    color: #ddd;
+    cursor: pointer;
+}
+.brand{
+    font-size: 38px;
+}
