@@ -12,9 +12,12 @@
     padding: 10px 0px;
     font-size: 20px;
 }
-.navbar > .options > div:hover {
+.navbar > .options > div:hover,  #electronic:hover{
     color: #ddd;
     cursor: pointer;
+}
+.options > div > i {
+    margin-right: 10px;
 }
 .brand{
     font-size: 38px;

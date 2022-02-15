@@ -1,0 +1,56 @@
+::-webkit-scrollbar{
+    width: 0;
+}
+.main{
+    overflow-y: scroll;
+}
+
+.banner{
+    display: flex;
+    padding: 40px;
+    background: linear-gradient(rgb(0,0,200),rgb(29, 29, 109));
+
+}
+
+.banner > img{
+    width: 200px;
+}
+.banner >div{
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.banner > div > *{
+    padding: 0px;
+    margin: 0px;
+}
+.banner > div > h1{
+    font-size: 65px;
+    
+
+}
+.song-playlist{
+    padding: 5px 20px;
+    background: linear-gradient(rgb(22, 22, 83), rgb(31, 30, 30));
+}
+
+.song-playlist div:first-child i{
+    font-size: 50px;
+    color: rgb(141, 196, 59);
+}
+
+.song-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .song-table th, td {
+    text-align: left;
+    padding: 16px;
+    padding-left: 18px;
+  }
+
+.song-table > tr:first-child{
+    border-bottom: 0.5px solid #aaa;
+}

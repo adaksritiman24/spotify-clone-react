@@ -1,3 +1,4 @@
 .playing-song{
     color: rgb(67, 105, 10);
 }
+.song-name{cursor: pointer;}

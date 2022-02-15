@@ -2,6 +2,11 @@ import React from 'react'
 import "./Song.css";
 export default function Song(props) {
   return (
-    <div onClick={()=>props.setCurrentTrack(props.id)} className={props.id===props.currentSongId? "playing-song" : "abc"}>{props.name}</div>
+    <tr className={props.id===props.currentSongId? "playing-song" : "abc"}>
+      <td onClick={()=>props.setCurrentTrack(props.id)} className="song-name">{props.name}</td>
+      <td>2 hours ago</td>
+      <td>{props.duration}</td>
+      
+    </tr>
   )
 }

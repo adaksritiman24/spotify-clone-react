@@ -15,7 +15,7 @@ export default function Navbar(props) {
         </div>
 
         <hr/>
-        <div>
+        <div id="electronic">
           <div onClick={()=>props.setPageType('playlist')}>Electronic</div>
         </div>
     </div>

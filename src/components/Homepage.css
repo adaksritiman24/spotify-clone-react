@@ -1,5 +1,13 @@
+.home-container{
+    /* border: 2px solid red; */
+    height: 100%;
+    background: linear-gradient(rgb(39, 39, 39), rgb(24, 24, 24));
+}
+
 .heading-playlist{
     margin-left: 30px;
+    margin-top: 0px;
+    padding-top: 20px;
 }
 .homepage> div > img{
     width: 200px;
@@ -14,4 +22,11 @@
 .homepage > div{
     padding: 7px;
     background-color: rgb(56, 55, 55);
+    cursor: pointer;
+}
+.homepage > div > *{
+    margin: 2px;
+}
+.homepage > div > div > *{
+    margin: 5px 2px;
 }
