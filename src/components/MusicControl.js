@@ -4,7 +4,7 @@ import "./MusicControl.css";
 // import { audio } from '../audio';
 
 export default function MusicControl(props) {
-  let [currentSong, setCurrentSong] = useState(props.currentSong)
+
   let [playing, setPlaying] = useState(false);
   let [maximumDuration, setMaximumDuration] = useState(0);
   let [durationPlayed, setDurationPlayed] = useState(0);
@@ -14,7 +14,7 @@ export default function MusicControl(props) {
   const [shuffle, setShuffle] = useState(false);
 
   const changeSliderValue = ()=>{
-    setDurationPlayed(audioPlayer.current.currentTime);
+    setDurationPlayed(parseInt(audioPlayer.current.currentTime));
   }
 
 
@@ -31,8 +31,9 @@ export default function MusicControl(props) {
   }
 
   const changeAudioVolume = (e)=>{
-    audioPlayer.current.volume = audioVolume;
+    
     setaudioVolume(e.target.value/100);
+    audioPlayer.current.volume = e.target.value/100;
   }
 
   const PlayNextSong = ()=>{
@@ -63,6 +64,13 @@ export default function MusicControl(props) {
     setPlaying(true);
   }
 
+
+  const playPreviousSong =()=>{
+    let previousSongId = props.currentSong.id === 0? 4 : props.currentSong.id -1;
+    props.setCurrentTrack(previousSongId);
+    setPlaying(true);
+  }
+
   const toggleShuffle=()=>{
     setSongsRemaining([0, 1, 2, 3, 4]);
     setShuffle(!shuffle);
@@ -75,15 +83,14 @@ export default function MusicControl(props) {
   }
 
   useEffect(() => {
-    setCurrentSong(props.currentSong);  
+
+    audioPlayer.current.load(); 
     audioPlayer.current.addEventListener("timeupdate",changeSliderValue);
-    audioPlayer.current.volume = audioVolume;
     
     audioPlayer.current.onloadedmetadata = ()=>{
       console.log(audioPlayer.current.duration);
       setMaximumDuration(audioPlayer.current.duration);
     }
-    // audioPlayer.current.pause();
     
   }, [props.currentSong]);
 
@@ -91,22 +98,23 @@ export default function MusicControl(props) {
     <div className='musiccontrol'>
       <div>
         <img src='imgs/thumbnail.jpg' alt= "not found"/>
-        <span>{currentSong.name}</span>
+        <span>{props.currentSong.name}</span>
       </div>
       <div>
         <div className='controls-btn'>
           <button onClick={toggleShuffle}><i className={shuffle? "bi bi-shuffle green-elem" : "bi bi-shuffle"}></i></button>
-          <button><i class="fas fa-step-backward"></i></button>
+          <button onClick={playPreviousSong}><i class="fas fa-step-backward"></i></button>
           <button onClick={playPauseAudioTrack}  className="playpausebtn"><i className={playing? "fas fa-pause": "fas fa-play"}></i></button>
           <button onClick={PlayNextSong}><i className="fas fa-step-forward"></i></button>
           <button onClick={toggleShuffle}><i className={shuffle? "bi bi-shuffle green-elem" : "bi bi-shuffle"}></i></button>
         </div>
         <audio
           onEnded={PlayNextSong}
-          src={currentSong.path}
-          autoPlay = "true"
+          autoPlay = {true}
           ref= {audioPlayer}
-        ></audio>
+          src={props.currentSong.path}
+        >
+        </audio>
         <footer style={{display: "flex", justifyContent:"center"}}>
           <input type = "range" id="song-bar" min="0" max={maximumDuration} value={durationPlayed} onChange={changeAudioPosition}></input>
         </footer>

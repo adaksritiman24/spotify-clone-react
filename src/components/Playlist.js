@@ -27,12 +27,17 @@ export default function Playlist({ audio, setCurrentTrack , currentSongId}) {
                 <i class="bi bi-play-circle-fill"></i>
             </div>
             <table className='song-table'>
+                <thead>
                 <tr>
-                    <th># Title</th>
+                    <th><span style={{marginRight:"22px"}}></span># Title</th>
                     <th>Date Added</th>
                     <th><i class="bi bi-clock"></i></th>
                 </tr>
+                </thead>
+                <tbody>
                     {songs}
+                </tbody>
+                    
             </table>
                 
         </div>

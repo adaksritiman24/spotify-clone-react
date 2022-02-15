@@ -51,6 +51,6 @@
     padding-left: 18px;
   }
 
-.song-table > tr:first-child{
+.song-table > thead tr:first-child{
     border-bottom: 0.5px solid #aaa;
 }
