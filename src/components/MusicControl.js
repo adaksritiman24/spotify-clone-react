@@ -91,7 +91,13 @@ export default function MusicControl(props) {
       console.log(audioPlayer.current.duration);
       setMaximumDuration(audioPlayer.current.duration);
     }
-    
+
+    setPlaying(true);
+    if(props.firstSong){
+      audioPlayer.current.pause();
+      setPlaying(false);
+    }
+
   }, [props.currentSong]);
 
   return (
